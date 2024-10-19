@@ -45,10 +45,10 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header onGetStarted={handleOpenModal} />
-      <main>
-        <Hero onGetStarted={handleOpenModal} />
-        <HowItWorks />
-        <CallToAction onGetStarted={handleOpenModal} />
+      <main className="flex-grow">
+        <Hero onGetStarted={handleOpenModal} className="mb-0" />
+        <HowItWorks className="mb-0" />
+        <CallToAction onGetStarted={handleOpenModal} className="mb-0" />
       </main>
       <Footer onOpenPrivacyPolicy={handleOpenPrivacyModal} onOpenTermsOfService={handleOpenTermsModal} />
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleSubmit} />
