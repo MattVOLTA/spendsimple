@@ -1,39 +1,26 @@
 const Airtable = require('airtable');
 
-exports.handler = async (event, context) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
+exports.handler = async (event) => {
+    const { name, email } = JSON.parse(event.body);
 
-  const { AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME } = process.env;
+    // Use environment variables for API key and base ID
+    const apiKey = process.env.AIRTABLE_API_KEY;
+    const baseId = process.env.AIRTABLE_BASE_ID;
 
-  if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID || !AIRTABLE_TABLE_NAME) {
-    return { statusCode: 500, body: 'Server configuration error' };
-  }
+    const base = new Airtable({ apiKey }).base(baseId);
 
-  try {
-    const { firstName, phoneNumber } = JSON.parse(event.body);
-
-    const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(AIRTABLE_BASE_ID);
-
-    await base(AIRTABLE_TABLE_NAME).create([
-      {
-        fields: {
-          'First Name': firstName,
-          'Phone Number': phoneNumber,
-        },
-      },
-    ]);
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: 'Data submitted successfully' }),
-    };
-  } catch (error) {
-    console.error('Airtable submission error:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to submit data' }),
-    };
-  }
+    try {
+        // Update the table name to "Users"
+        await base('Users').create([{ fields: { Name: name, Email: email } }]);
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'Success' }),
+        };
+    } catch (error) {
+        console.error('Airtable submission error:', error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: 'Error', error: error.message }),
+        };
+    }
 };

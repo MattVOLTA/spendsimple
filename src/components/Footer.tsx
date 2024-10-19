@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-300 text-center">
-          <p>&copy; 2023 Spend Simple. All rights reserved.</p>
+          <p>&copy; 2024 Spend Simple. All rights reserved.</p>
         </div>
       </div>
     </footer>
