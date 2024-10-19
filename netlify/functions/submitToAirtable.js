@@ -4,7 +4,7 @@ exports.handler = async (event) => {
     const { firstName, phoneNumber } = JSON.parse(event.body);
 
     // Use environment variables for API key and base ID
-    const apiKey = process.env.AIRTABLE_API_KEY;
+    const apiKey = process.env.AIRTABLE_API_KEY; // Correct usage of environment variable
     const baseId = process.env.AIRTABLE_BASE_ID;
 
     const base = new Airtable({ apiKey }).base(baseId);

@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
     setSubmitError('');
 
     try {
-      const response = await fetch('/api/submitToAirtable', {
+      const response = await fetch('https://spendsimple.co/api/submitToAirtable', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
