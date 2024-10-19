@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Facebook, Twitter, Instagram } from 'lucide-react';
+import ContactModal from './ContactModal'; // Import the ContactModal
 
 interface FooterProps {
   onOpenPrivacyPolicy: () => void;
@@ -7,6 +8,16 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy, onOpenTermsOfService }) => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleOpenContactModal = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const handleCloseContactModal = () => {
+    setIsContactModalOpen(false);
+  };
+
   return (
     <footer className="bg-secondary text-text py-8">
       <div className="container mx-auto px-4">
@@ -24,7 +35,9 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy, onOpenTermsOfServi
               <li>
                 <a href="#" onClick={onOpenTermsOfService} className="hover:text-accent">Terms of Service</a>
               </li>
-              <li><a href="#" className="hover:text-accent">Contact Us</a></li>
+              <li>
+                <a href="#" onClick={handleOpenContactModal} className="hover:text-accent">Contact Us</a>
+              </li>
             </ul>
           </div>
           <div className="w-full md:w-1/3">
@@ -37,6 +50,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy, onOpenTermsOfServi
           </div>
         </div>
       </div>
+      <ContactModal isOpen={isContactModalOpen} onClose={handleCloseContactModal} />
     </footer>
   );
 };
