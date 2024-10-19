@@ -36,8 +36,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
       setPhoneNumber('');
       onClose();
     } catch (error) {
-      console.error('Submission error:', error);
-      setSubmitError(`Failed to submit. Please try again. Error: ${error.message}`);
+      const err = error as Error; // Type assertion
+      console.error('Submission error:', err);
+      setSubmitError(`Failed to submit. Please try again. Error: ${err.message}`);
     } finally {
       setIsSubmitting(false);
     }
