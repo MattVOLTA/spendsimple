@@ -10,7 +10,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-8 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Stay on top of your budget, one text at a time.</h1>
-          <p className="text-xl mb-6 text-gray-600">No apps. No hassle! Just simple budgeting with a text.</p>
+          <p className="text-xl mb-6 text-gray-600">No apps. No hassle. Just simple budgeting with a text.</p>
           <button onClick={onGetStarted} className="btn btn-primary">Get Started for Free</button>
         </div>
         <div className="md:w-1/2 flex justify-center">
