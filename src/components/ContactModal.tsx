@@ -30,12 +30,11 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
     const { firstName, lastName, email, comment } = formData;
 
-    if (!validateEmail(email)) { // Validate only the user's email
+    if (!validateEmail(email)) {
       setErrors({ email: 'Invalid email format' });
       return;
     }
 
-    // Clear errors and proceed with form submission
     setErrors({ email: '' });
 
     try {
@@ -44,12 +43,12 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ firstName, lastName, email, comment }), // Exclude recipientEmail
+        body: JSON.stringify({ firstName, lastName, email, comment }),
       });
 
       if (response.ok) {
         setSuccessMessage('Your message has been sent');
-        setFormData({ firstName: '', lastName: '', email: '', comment: '' }); // Clear form fields
+        setFormData({ firstName: '', lastName: '', email: '', comment: '' });
       } else {
         console.error('Failed to send email');
       }
