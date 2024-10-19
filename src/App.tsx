@@ -17,10 +17,10 @@ function App() {
     setIsModalOpen(false);
   };
 
-  const handleSubmit = (firstName: string, phoneNumber: string) => {
-    console.log('Submitted:', { firstName, phoneNumber });
+  const handleSubmit = (firstName: string, lastName: string, phoneNumber: string) => {
+    console.log('Submitted:', { firstName, lastName, phoneNumber });
     // Here you would typically send this data to your backend
-    setIsModalOpen(false);
+    // Removed the line that closes the modal
   };
 
   return (
