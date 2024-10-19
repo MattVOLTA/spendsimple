@@ -7,7 +7,7 @@ const Testimonial: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">See What Our Users Are Saying</h2>
         <div className="max-w-3xl mx-auto bg-white text-gray-800 p-8 rounded-lg shadow-xl">
           <blockquote className="text-xl italic mb-4">
-            "SpendSimple has completely changed how I manage my finances. It's so easy to use, and I love getting instant updates on my spending. I finally feel in control of my budget!"
+            "Spend Simple has completely changed how I manage my finances. It's so easy to use, and I love getting instant updates on my spending. I finally feel in control of my budget!"
           </blockquote>
           <div className="flex items-center">
             <img 

@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
+import PrivacyPolicyModal from './components/PrivacyPolicyModal';
+import TermsOfServiceModal from './components/TermsOfServiceModal';
 import Modal from './components/Modal';
 
 function App() {
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleGetStarted = () => {
+  const handleOpenPrivacyModal = () => {
+    setIsPrivacyModalOpen(true);
+  };
+
+  const handleClosePrivacyModal = () => {
+    setIsPrivacyModalOpen(false);
+  };
+
+  const handleOpenTermsModal = () => {
+    setIsTermsModalOpen(true);
+  };
+
+  const handleCloseTermsModal = () => {
+    setIsTermsModalOpen(false);
+  };
+
+  const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
@@ -18,21 +38,22 @@ function App() {
   };
 
   const handleSubmit = (firstName: string, lastName: string, phoneNumber: string) => {
-    console.log('Submitted:', { firstName, lastName, phoneNumber });
-    // Here you would typically send this data to your backend
-    // Removed the line that closes the modal
+    // Handle form submission success
+    console.log('Form submitted:', { firstName, lastName, phoneNumber });
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header onGetStarted={handleGetStarted} />
+      <Header onGetStarted={handleOpenModal} />
       <main>
-        <Hero onGetStarted={handleGetStarted} />
+        <Hero onGetStarted={handleOpenModal} />
         <HowItWorks />
-        <CallToAction onGetStarted={handleGetStarted} />
+        <CallToAction onGetStarted={handleOpenModal} />
       </main>
-      <Footer />
+      <Footer onOpenPrivacyPolicy={handleOpenPrivacyModal} onOpenTermsOfService={handleOpenTermsModal} />
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleSubmit} />
+      <PrivacyPolicyModal isOpen={isPrivacyModalOpen} onClose={handleClosePrivacyModal} />
+      <TermsOfServiceModal isOpen={isTermsModalOpen} onClose={handleCloseTermsModal} />
     </div>
   );
 }
