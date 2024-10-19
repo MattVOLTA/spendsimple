@@ -27,7 +27,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit data');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit data');
       }
 
       onSubmit(firstName, phoneNumber);
@@ -36,7 +37,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
       onClose();
     } catch (error) {
       console.error('Submission error:', error);
-      setSubmitError('Failed to submit. Please try again.');
+      setSubmitError(`Failed to submit. Please try again. Error: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
