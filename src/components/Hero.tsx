@@ -9,7 +9,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
     <section className="bg-secondary text-text section-padding">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center md:justify-between">
         <div className="md:w-1/2 mb-8 md:mb-0 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Stay on top of your budget, one text at a time.</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Stay on top of your spending, one text at a time.</h1>
           <p className="text-xl mb-6 text-gray-600">No apps. No hassle. Just simple budgeting with a text.</p>
           <button onClick={onGetStarted} className="btn btn-primary mx-auto">Get Started for Free</button>
         </div>
