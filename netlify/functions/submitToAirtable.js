@@ -1,7 +1,7 @@
 const Airtable = require('airtable');
 
 exports.handler = async (event) => {
-    const { name, email } = JSON.parse(event.body);
+    const { firstName, phoneNumber } = JSON.parse(event.body);
 
     // Use environment variables for API key and base ID
     const apiKey = process.env.AIRTABLE_API_KEY;
@@ -10,8 +10,12 @@ exports.handler = async (event) => {
     const base = new Airtable({ apiKey }).base(baseId);
 
     try {
-        // Update the table name to "Users"
-        await base('Users').create([{ fields: { Name: name, Email: email } }]);
+        await base('Users').create([{
+            fields: {
+                "First Name": firstName,
+                "Phone Number": phoneNumber
+            }
+        }]);
         return {
             statusCode: 200,
             body: JSON.stringify({ message: 'Success' }),
