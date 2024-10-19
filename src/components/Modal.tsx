@@ -44,6 +44,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
     }
   };
 
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Allow only numbers and limit to 10 characters
+    if (/^\d*$/.test(value) && value.length <= 10) {
+      setPhoneNumber(value);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -68,7 +76,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
               type="tel"
               id="phoneNumber"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={handlePhoneNumberChange}
               className="w-full px-3 py-2 border border-gray-300 text-text rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
               required
             />
