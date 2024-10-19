@@ -1,5 +1,6 @@
 import React from 'react';
 import { MessageSquare } from 'lucide-react';
+import styles from '../styles/components/Header.module.css'; // Import the CSS module
 
 interface HeaderProps {
   onGetStarted: () => void;
@@ -16,10 +17,15 @@ const Header: React.FC<HeaderProps> = ({ onGetStarted }) => {
         <div className="flex items-center space-x-6">
           <nav>
             <ul className="flex">
-              <li><a href="#how-it-works" className="text-text hover:text-accent">How It Works</a></li>
+              <li className={styles.hideOnMobile}>
+                <a href="#how-it-works" className="text-text hover:text-accent">How It Works</a>
+              </li>
             </ul>
           </nav>
-          <button onClick={onGetStarted} className="btn btn-primary">Get Started for Free</button>
+          <button onClick={onGetStarted} className="btn btn-primary">
+            <span className={styles.buttonText}>Get Started for Free</span>
+            <span className={styles.buttonTextMobile}>Get Started</span>
+          </button>
         </div>
       </div>
     </header>

@@ -1,0 +1,30 @@
+/* Assuming you are using CSS modules */
+.buttonText {
+  display: inline;
+}
+
+@media (max-width: 640px) {
+  .buttonText {
+    display: none;
+  }
+}
+
+.buttonTextMobile {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .buttonTextMobile {
+    display: inline;
+  }
+}
+
+.hideOnMobile {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .hideOnMobile {
+    display: none;
+  }
+}
