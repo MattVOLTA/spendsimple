@@ -10,8 +10,8 @@ const Header: React.FC<HeaderProps> = ({ onGetStarted }) => {
     <header className="bg-white py-4 shadow-md">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          {/* Updated the logo image source */}
-          <img src="/images/sslogo.png" alt="Spend Simple Logo" className="h-8 mr-2" />
+          {/* Increased the logo size by an additional 5 pixels while maintaining the aspect ratio */}
+          <img src="/images/sslogo.png" alt="Spend Simple Logo" className="h-11 mr-2" />
           <span className="text-2xl font-bold text-text">Spend Simple</span>
         </div>
         <div className="flex items-center space-x-6">
