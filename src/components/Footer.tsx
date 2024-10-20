@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ContactModal from './ContactModal'; // Import the ContactModal
+import Image from 'next/image';
 
 interface FooterProps {
   onOpenPrivacyPolicy: () => void;
